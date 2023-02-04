@@ -2,6 +2,7 @@ package com.example.happybirthday
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
@@ -12,7 +13,8 @@ class MainActivity : AppCompatActivity() {
 
         val rollButton : Button = findViewById(R.id.button)
         rollButton.setOnClickListener{
-            Toast.makeText(this, "Dice Rolled!", Toast.LENGTH_SHORT).show()
+            val resultText : TextView = findViewById(R.id.textView)
+            resultText.text = "6"
         }
     }
 }
