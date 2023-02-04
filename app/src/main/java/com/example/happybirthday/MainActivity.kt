@@ -3,7 +3,9 @@ package com.example.happybirthday
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import kotlin.concurrent.thread
 
 /**
  * This activity allows the user to roll a dice and view the result
@@ -19,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         //Do a cube spin when the app starts
         spinCube()
+        division()
 
     }
 
@@ -31,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         val cubeSpin = cube.spin()
 
         // Find the ImageView in the layout
-        val cubeImage : ImageView = findViewById(R.id.imageView)
+        val cubeImage: ImageView = findViewById(R.id.imageView)
 
         // Determine which drawable resource ID to use based on the dice roll
         val drawableResource = when (cubeSpin) {
@@ -48,6 +51,20 @@ class MainActivity : AppCompatActivity() {
 
         // Update the content description
         cubeImage.contentDescription = cubeSpin.toString()
+    }
+
+    private fun division() {
+        val numerator = 60
+        var denominator = 4
+        thread(start = true) {
+            repeat(4) {
+                Thread.sleep(3000)
+                runOnUiThread {
+                    findViewById<TextView>(R.id.thread_text).setText("${numerator / denominator}")
+                    denominator--
+                }
+            }
+        }
     }
 }
 
