@@ -2,6 +2,7 @@ package com.example.happybirthday
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -27,9 +28,8 @@ class MainActivity : AppCompatActivity() {
         val cube = Cube(6)
         val cubeSpin = cube.spin()
 
-        // Update the screen with the dice roll
-        val resultTextView: TextView = findViewById(R.id.textView)
-        resultTextView.text = cubeSpin.toString()
+        val cubeImage : ImageView = findViewById(R.id.imageView)
+        cubeImage.setImageResource(R.drawable.dice_2)
     }
 }
 
